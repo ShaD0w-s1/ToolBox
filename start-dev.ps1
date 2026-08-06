@@ -6,8 +6,8 @@ param(
     [ValidateRange(1, 65535)]
     [int]$FrontendPort = 5173,
 
-    [ValidatePattern('^[A-Za-z0-9_]+$')]
-    [string]$CloudBaseCollectionPrefix = "test_"
+    [ValidatePattern('^[A-Za-z0-9_]*$')]
+    [string]$CloudBaseCollectionPrefix = ""
 )
 
 $ErrorActionPreference = "Stop"

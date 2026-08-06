@@ -1,0 +1,7 @@
+{
+  "name": "toolbox-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./start-dev.ps1"
+  }
+}
