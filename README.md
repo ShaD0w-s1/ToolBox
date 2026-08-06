@@ -1,14 +1,15 @@
 # ToolBox
 
-ToolBox 是一个前后端分离的工具清单应用。父仓库通过 Git 子模块管理 Django 后端与 Vite 前端，并提供统一的本地开发启动脚本。
+ToolBox 是一个前后端分离的工具清单应用。父仓库通过 Git 子模块管理 Django 后端、Web 管理端与微信小程序，并提供统一的本地开发启动脚本。
 
 ## 仓库结构
 
 ```text
 ToolBox/
-├── ToolBoxBackEnd/   # Django HTTP API
-├── ToolBoxFrontEnd/  # Vite 前端
-└── start-dev.ps1     # 同时启动前后端开发服务器
+├── ToolBoxBackEnd/       # Django HTTP API
+├── ToolBoxWebFrontEnd/    # Vite Web 管理端
+├── ToolBoxWeiXinFrontEnd/ # 微信小程序（待选型）
+└── start-dev.ps1         # 同时启动后端与管理端开发服务器
 ```
 
 业务数据存储在腾讯云 CloudBase NoSQL 中。Django 的本地 SQLite 仅用于框架自身的会话、认证和迁移，不存储项目、模板或工具车等业务数据。
@@ -34,10 +35,10 @@ cd ..
 
 在 `ToolBoxBackEnd/.env` 中填写有效的 `CLOUDBASE_ENV_ID` 和服务端 `CLOUDBASE_API_KEY`。不要提交 `.env` 或任何密钥。
 
-初始化前端：
+初始化管理端：
 
 ```powershell
-cd ToolBoxFrontEnd
+cd ToolBoxWebFrontEnd
 npm install
 cd ..
 ```
@@ -68,7 +69,7 @@ cd ..
 
 脚本会同时启动：
 
-- 前端：<http://localhost:5173/>
+- 管理端：<http://localhost:5173/>
 - 后端：<http://127.0.0.1:8000/>
 
 按 `Ctrl+C` 会同时停止前后端及其子进程。也可以覆盖默认端口：
@@ -86,8 +87,8 @@ cd ..
 .\ToolBoxBackEnd\.venv\Scripts\python.exe .\ToolBoxBackEnd\manage.py test api
 ```
 
-前端：
+管理端：
 
 ```powershell
-npm --prefix .\ToolBoxFrontEnd run build
+npm --prefix .\ToolBoxWebFrontEnd run build
 ```

@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 
 $root = $PSScriptRoot
 $backendDir = Join-Path $root "ToolBoxBackEnd"
-$frontendDir = Join-Path $root "ToolBoxFrontEnd"
+$frontendDir = Join-Path $root "ToolBoxWebFrontEnd"
 $python = Join-Path $backendDir ".venv\Scripts\python.exe"
 $npm = Get-Command "npm.cmd" -ErrorAction SilentlyContinue
 
@@ -27,7 +27,7 @@ if (-not $npm) {
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $frontendDir "node_modules") -PathType Container)) {
-    throw "Frontend dependencies are missing. Run npm install in ToolBoxFrontEnd first."
+    throw "Web frontend dependencies are missing. Run npm install in ToolBoxWebFrontEnd first."
 }
 
 $processes = @()
@@ -66,7 +66,7 @@ try {
     }
     $processes += $backend
 
-    Write-Host "Starting frontend: http://localhost:$FrontendPort/" -ForegroundColor Cyan
+    Write-Host "Starting web frontend: http://localhost:$FrontendPort/" -ForegroundColor Cyan
     $previousProxyTarget = $env:VITE_DEV_PROXY_TARGET
     try {
         $env:VITE_DEV_PROXY_TARGET = "http://127.0.0.1:$BackendPort"
