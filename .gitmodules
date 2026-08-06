@@ -1,0 +1,8 @@
+[submodule "ToolBoxBackEnd"]
+	path = ToolBoxBackEnd
+	url = ../ToolBoxBackEnd.git
+	branch = develop
+[submodule "ToolBoxFrontEnd"]
+	path = ToolBoxFrontEnd
+	url = ../ToolBoxFrontEnd.git
+	branch = main
